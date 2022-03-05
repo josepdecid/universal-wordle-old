@@ -1,3 +1,4 @@
+import seedrandom from 'seedrandom';
 import { getGameMode, getTrainingSeed } from './storage';
 import { GameMode } from './types';
 
@@ -19,4 +20,9 @@ export const getSeedForWord = (): string => {
   }
 
   return undefined;
+};
+
+export const getRandomGenerator = () => {
+  const seed = getSeedForWord();
+  return { randomGenerator: seedrandom(seed), seed };
 };

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import seedrandom from 'seedrandom';
   import { getContext } from 'svelte';
   import { ConfettiExplosion } from 'svelte-confetti-explosion';
   import dictionary from '../../assets/dictionaries/ca-ES/dictionary.json';
@@ -8,9 +7,8 @@
     getStoredData,
     getWordLength,
   } from '../../utils/storage';
-  import { getSeedForWord } from '../../utils/utils';
+  import { getRandomGenerator } from '../../utils/utils';
   import Row from './Row.svelte';
-  import Popup from '../misc/Popup.svelte';
 
   const { open } = getContext('simple-modal');
 
@@ -23,11 +21,9 @@
 
   // We obtain a different seed depending on the GAME MODE.
   // Therefore, the TARGET WORD remains the same even if you refresh the page.
-  const seed = getSeedForWord();
-  const randomGenerator = seedrandom(seed);
+  const { randomGenerator, seed } = getRandomGenerator();
   const randomWordIndex = Math.floor(randomGenerator() * candidateWords.length);
   const targetWord = candidateWords[randomWordIndex];
-  console.log(targetWord);
 
   // The game may be an already started one so we check if there is saved data for the seed.
   const savedData = getStoredData(seed);
