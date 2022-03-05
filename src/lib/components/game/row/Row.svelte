@@ -124,7 +124,11 @@
     }
 
     value = value.toUpperCase();
-    if (value.length === 1 && value >= 'A' && value <= 'Z') {
+    if (
+      (value.length === 1 && value >= 'A' && value <= 'Z') ||
+      value === 'Ç' ||
+      value === 'Ñ'
+    ) {
       if (cellsValues.length < targetWord.length) {
         cellsValues = [...cellsValues, value];
       }

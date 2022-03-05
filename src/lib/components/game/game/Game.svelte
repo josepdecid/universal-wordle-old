@@ -44,10 +44,14 @@
     if (savedData[savedData.length - 1] === targetWord) {
       wonGame = true;
       currentAttemptIdx = null;
-      open(Popup, { wonGame, targetWord });
+      open(Popup, { win: true, targetWord });
       return;
     }
   };
+
+  $: if (currentAttemptIdx >= numAttempts) {
+    open(Popup, { win: false, targetWord });
+  }
 </script>
 
 <div>
