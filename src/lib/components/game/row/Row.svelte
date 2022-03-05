@@ -161,6 +161,12 @@
   div {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 325px;
+    width: 100%;
+
     column-gap: 8px;
   }
 

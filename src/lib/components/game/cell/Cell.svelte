@@ -29,7 +29,7 @@
 
 <style>
   .cell {
-    width: 56px;
+    flex: 1;
     height: 56px;
   }
 

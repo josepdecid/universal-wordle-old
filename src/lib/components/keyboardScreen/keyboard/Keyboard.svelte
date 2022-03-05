@@ -2,7 +2,7 @@
   import { getKeyboardLayout } from '../../../utils/keyboards';
   import { Key } from '../../../components/keyboardScreen';
 
-  const layout = getKeyboardLayout();
+  const layout = getKeyboardLayout('ca-ES');
 </script>
 
 <div id="keyboard">
@@ -19,14 +19,21 @@
   #keyboard {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+
+    width: calc(100% - 2rem);
+
     row-gap: 5px;
-    margin-top: 2rem;
+    margin: 2rem 1rem;
   }
 
   .keyboard-row {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
     column-gap: 5px;
   }
 </style>

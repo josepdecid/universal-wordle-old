@@ -74,7 +74,12 @@
   div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+
+    width: calc(100% - 2rem);
+
     row-gap: 8px;
+    margin: 2rem 1rem;
   }
 </style>

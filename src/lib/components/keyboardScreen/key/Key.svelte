@@ -48,7 +48,6 @@
 
 <button
   on:click={handleScreenKeyboardInput}
-  class="keyboard-key"
   style="
     background-color: {getKeyBackgroundColor()};
     filter: brightness({getKeyPressedColor()});
@@ -58,24 +57,23 @@
 </button>
 
 <style>
-  .keyboard-key {
-    min-width: 30px;
+  button {
     height: 50px;
 
     border: none;
-    cursor: pointer;
     border-radius: 5px;
+    cursor: pointer;
 
     background-color: #7c7e80;
     color: white;
 
-    text-transform: capitalize;
     font-family: 'Poppins';
+    text-transform: capitalize;
     font-size: 1rem;
     line-height: 2rem;
   }
 
-  .keyboard-key:hover {
+  button:hover {
     filter: brightness(0.75) !important;
   }
 </style>
