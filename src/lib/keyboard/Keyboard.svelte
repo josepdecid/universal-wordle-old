@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import { getKeyboardLayout } from '../../utils/keyboards';
   import Key from './Key.svelte';
 

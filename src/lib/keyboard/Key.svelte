@@ -28,7 +28,11 @@
   });
 
   const handleScreenKeyboardInput = () => {
-    storeKeyTouched.update((_) => key);
+    storeKeyTouched.update((_) => {
+      if (key === '⌫') return 'BackSpace';
+      if (key === '⏎') return 'Enter';
+      return key;
+    });
   };
 
   $: getKeyBackgroundColor = () => {
