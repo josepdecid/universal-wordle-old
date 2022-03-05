@@ -6,6 +6,7 @@
     storeLetterStatus,
   } from '../../utils/stores';
   import { getColorFromState } from '../../utils/colors';
+  import { Key } from 'ts-key-enum';
 
   export let key: string;
 
@@ -16,8 +17,8 @@
 
   let keyPressed: boolean = false;
   storeKeyPressed.subscribe((value) => {
-    if (value === 'BackSpace') value = '⌫';
-    else if (value === 'Enter') value = '⏎';
+    if (value === Key.Backspace) value = '⌫';
+    else if (value === Key.Enter) value = '⏎';
     else value = value?.toUpperCase();
 
     keyPressed = value === key;
@@ -29,8 +30,8 @@
 
   const handleScreenKeyboardInput = () => {
     storeKeyTouched.update((_) => {
-      if (key === '⌫') return 'BackSpace';
-      if (key === '⏎') return 'Enter';
+      if (key === '⌫') return Key.Backspace;
+      if (key === '⏎') return Key.Enter;
       return key;
     });
   };
@@ -58,7 +59,7 @@
 
 <style>
   .keyboard-key {
-    min-width: 40px;
+    min-width: 30px;
     height: 50px;
 
     border: none;

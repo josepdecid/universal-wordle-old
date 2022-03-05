@@ -47,7 +47,7 @@
     if (savedData[savedData.length - 1] === targetWord) {
       wonGame = true;
       currentAttemptIdx = null;
-      open(Popup);
+      // open(Popup);
       return;
     }
   };
