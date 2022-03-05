@@ -14,8 +14,6 @@
   export let onChange: (mode: GameMode) => void;
   // ---------------------
 
-  console.log(initialValue);
-
   const handleChangeValue = (event: any) => {
     const isChecked = event.target.checked;
     onChange(isChecked ? rightContent.value : leftContent.value);
