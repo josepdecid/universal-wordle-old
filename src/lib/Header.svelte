@@ -22,7 +22,7 @@
 
 <header>
   <div class="title">
-    <img src="/flags/ca.svg" alt="Language" />
+    <img src="/universal-wordle/flags/ca.svg" alt="Language" />
     <h1>WORDLE</h1>
   </div>
   <div class="actions">
