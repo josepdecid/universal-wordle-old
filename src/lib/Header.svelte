@@ -43,7 +43,7 @@
 
     {#if gameMode === GameMode.Training}
       <button on:click={handleResetWordle}>
-        <img src="/icons/refresh.svg" alt="Daily Challenge" />
+        <img src="/universal-wordle/icons/refresh.svg" alt="Daily Challenge" />
       </button>
     {/if}
   </div>

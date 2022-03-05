@@ -23,7 +23,10 @@
 </script>
 
 <div>
-  <img src="/icons/{leftContent.fileName}.svg" alt={leftContent.alt} />
+  <img
+    src="/universal-wordle/icons/{leftContent.fileName}.svg"
+    alt={leftContent.alt}
+  />
   <label class="switch">
     <input
       type="checkbox"
@@ -32,7 +35,10 @@
     />
     <span class="slider round" />
   </label>
-  <img src="/icons/{rightContent.fileName}.svg" alt={rightContent.alt} />
+  <img
+    src="/universal-wordle/icons/{rightContent.fileName}.svg"
+    alt={rightContent.alt}
+  />
 </div>
 
 <style>
