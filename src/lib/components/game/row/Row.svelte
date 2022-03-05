@@ -1,20 +1,22 @@
 <script lang="ts">
   import { Key } from 'ts-key-enum';
-  import { notifications } from '../../utils/notifications';
+  import { notifications } from '../../../utils/notifications';
   import {
     storeKeyPressed,
     storeKeyTouched,
     updateStoreLetterStatus,
-  } from '../../utils/stores';
-  import type { CellStatus } from '../../utils/types';
-  import Cell from './Cell.svelte';
+  } from '../../../utils/stores';
+  import type { CellStatus } from '../../../utils/types';
+  import { Cell } from '../../../components/game';
 
+  // Properties ----------
   export let currentWord: string;
   export let targetWord: string;
   export let locked: boolean;
 
   export let handleCheckCorrectWord: (word: string) => boolean;
   export let handleSubmitSolution: (word: string) => void;
+  // ---------------------
 
   const getCellStatus = (
     target: string,

@@ -1,7 +1,7 @@
 <script>
   import { flip } from 'svelte/animate';
   import { fly } from 'svelte/transition';
-  import { notifications } from '../../utils/notifications';
+  import { notifications } from '../../../utils/notifications';
 
   export let themes = {
     danger: '#E26D69',

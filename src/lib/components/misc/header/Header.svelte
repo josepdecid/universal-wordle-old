@@ -3,9 +3,9 @@
     getGameMode,
     removeTrainingSeed,
     setGameMode,
-  } from '../utils/storage';
-  import { GameMode } from '../utils/types';
-  import Toggle from './misc/Toggle.svelte';
+  } from '../../../utils/storage';
+  import { GameMode } from '../../../utils/types';
+  import { Toggle } from '../../../components/misc';
 
   const gameMode = getGameMode();
 

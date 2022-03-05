@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { getColorFromState } from '../../utils/colors';
-  import type { CellStatus } from '../../utils/types';
+  import { getColorFromState } from '../../../utils/colors';
+  import type { CellStatus } from '../../../utils/types';
 
   // Properties ----------
   export let cellIndex: number;

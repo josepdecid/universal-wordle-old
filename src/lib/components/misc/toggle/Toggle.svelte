@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { GameMode } from 'src/utils/types';
+  import type { GameMode } from '../../../utils/types';
 
   interface ContentProps {
     fileName: string;

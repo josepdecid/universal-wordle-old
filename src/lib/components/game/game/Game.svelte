@@ -1,14 +1,15 @@
 <script lang="ts">
   import { getContext } from 'svelte';
   import { ConfettiExplosion } from 'svelte-confetti-explosion';
-  import dictionary from '../../assets/dictionaries/ca-ES/dictionary.json';
+  import dictionary from '../../../../assets/dictionaries/ca-ES/dictionary.json';
   import {
     getNumAttempts,
     getStoredData,
     getWordLength,
-  } from '../../utils/storage';
-  import { getRandomGenerator } from '../../utils/utils';
-  import Row from './Row.svelte';
+  } from '../../../utils/storage';
+  import { getRandomGenerator } from '../../../utils/utils';
+  import { Row } from '../../../components/game';
+  import { Popup } from '../../../components/misc';
 
   const { open } = getContext('simple-modal');
 
@@ -43,7 +44,7 @@
     if (savedData[savedData.length - 1] === targetWord) {
       wonGame = true;
       currentAttemptIdx = null;
-      // open(Popup);
+      open(Popup, { wonGame, targetWord });
       return;
     }
   };
