@@ -466,8 +466,11 @@
 
   .wrap {
     position: relative;
-    margin: 2rem;
+    /* margin: 2rem; */
     max-height: 100%;
+
+    display: flex;
+    justify-content: center;
   }
 
   .window {
@@ -478,7 +481,13 @@
     margin: 2rem auto;
     color: black;
     border-radius: 0.5rem;
-    background: white;
+    background: #f3f2ed;
+
+    /* TODO: Parametrize? */
+    max-width: 500px;
+    width: calc(100% - 2rem);
+
+    margin: 2rem 1rem;
   }
 
   .content {

@@ -66,7 +66,7 @@
   {/each}
 
   {#if wonGame}
-    <ConfettiExplosion --x="0" --y="-50vh" particleCount={50} />
+    <ConfettiExplosion --x="0" --y="-50vh" particleCount={50} duration={5000} />
   {/if}
 </div>
 
