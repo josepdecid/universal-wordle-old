@@ -58,9 +58,9 @@
   {#each { length: numAttempts } as _, idx}
     <Row
       {targetWord}
-      currentWord={savedData[idx]}
+      inputWord={savedData[idx]}
       locked={idx !== currentAttemptIdx}
-      handleCheckCorrectWord={checkWordExistsInDictionary}
+      checkWordExists={checkWordExistsInDictionary}
       handleSubmitSolution={goToNextAttempt}
     />
   {/each}

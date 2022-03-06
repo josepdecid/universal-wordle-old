@@ -1,103 +1,51 @@
 <script lang="ts">
+  import type { InputState } from '../../../utils/types';
+
+  import { getInputStates } from '../../../utils/utils';
+
   import { Key } from 'ts-key-enum';
+  import { Cell } from '../../../components/game';
   import { notifications } from '../../../utils/notifications';
   import {
     storeKeyPressed,
     storeKeyTouched,
-    updateStoreLetterStatus,
+    updateStoreLetterState,
   } from '../../../utils/stores';
-  import type { CellStatus } from '../../../utils/types';
-  import { Cell } from '../../../components/game';
 
   // Properties ----------
-  export let currentWord: string;
   export let targetWord: string;
-  export let locked: boolean;
 
-  export let handleCheckCorrectWord: (word: string) => boolean;
+  export let inputWord: string = null;
+  export let locked: boolean = false;
+
+  export let checkWordExists: (word: string) => boolean;
   export let handleSubmitSolution: (word: string) => void;
   // ---------------------
 
-  const getCellStatus = (
-    target: string,
-    current: string,
-    options: string
-  ): CellStatus => {
-    // The letter is correct and in the correct position
-    if (target === current) return 'Correct';
-    // The letter exists but in another position
-    if (options.includes(current)) return 'TmpMissplaced';
-    // The letter does not appear in the word
-    return 'Missing';
-  };
-
-  const refineCellStatus = (
-    cellsValues: Array<string>,
-    cellsStatus: Array<CellStatus>
-  ) => {
-    const availableMissplaces = {};
-    for (const letter of cellsValues) {
-      if (letter in Object.keys(availableMissplaces))
-        ++availableMissplaces[letter];
-      else availableMissplaces[letter] = 1;
-    }
-
-    for (let i = 0; i < cellsValues.length; ++i) {
-      if (cellsStatus[i] === 'Correct') {
-        --availableMissplaces[cellsValues[i]];
-      }
-    }
-
-    for (let i = 0; i < cellsValues.length; ++i) {
-      if (cellsStatus[i] === 'TmpMissplaced') {
-        if (availableMissplaces[cellsValues[i]] > 0) {
-          cellsStatus[i] = 'Missplaced';
-          --availableMissplaces[cellsValues[i]];
-        } else {
-          cellsStatus[i] = 'Missing';
-        }
-      }
-
-      updateStoreLetterStatus(cellsValues[i], cellsStatus[i]);
-    }
-  };
-
   let rowElement;
-  let isValid = true;
-  let uncover = false;
+  let isValid: boolean = true;
+  let uncover: boolean = false;
   let cellsValues = [];
-  let cellsStatus = [];
+  let inputStates: Array<InputState> = [];
 
-  if (currentWord) {
+  // If the input word is already given (e.g. previously saved state)
+  // set the colors and uncover the row.
+  if (inputWord) {
     uncover = true;
-    cellsValues = currentWord.split('');
-    for (let idx = 0; idx < targetWord.length; ++idx) {
-      const status = getCellStatus(
-        targetWord[idx],
-        currentWord[idx],
-        targetWord
-      );
-      cellsStatus.push(status);
-    }
-
-    refineCellStatus(cellsValues, cellsStatus);
+    cellsValues = inputWord.split('');
+    inputStates = getInputStates(cellsValues, targetWord.split(''));
+    updateStoreLetterState(cellsValues, inputStates);
   }
 
-  const handleCheckSolution = (inputWord: string): boolean => {
-    isValid = handleCheckCorrectWord(inputWord);
+  const checkValidSolution = (inputWord: string): boolean => {
+    isValid = checkWordExists(inputWord);
     if (!isValid) {
       notifications.warning('Ei! Aquesta paraula no existeix!', 3000);
-      console.log(rowElement);
-
       return false;
     }
 
-    for (let idx = 0; idx < targetWord.length; ++idx) {
-      const status = getCellStatus(targetWord[idx], inputWord[idx], targetWord);
-      cellsStatus = [...cellsStatus, status];
-    }
-
-    refineCellStatus(cellsValues, cellsStatus);
+    inputStates = getInputStates(inputWord.split(''), targetWord.split(''));
+    updateStoreLetterState(cellsValues, inputStates);
 
     return true;
   };
@@ -109,7 +57,7 @@
     if (value === Key.Enter) {
       if (cellsValues.length === targetWord.length) {
         const inputWord = cellsValues.join('').toUpperCase();
-        const validSolution = handleCheckSolution(inputWord);
+        const validSolution = checkValidSolution(inputWord);
         if (validSolution) {
           uncover = true;
           handleSubmitSolution(inputWord);
@@ -154,7 +102,7 @@
       selected={!locked && cellsValues.length === idx}
       cellIndex={idx}
       value={cellsValues[idx]}
-      status={cellsStatus[idx]}
+      status={inputStates[idx]}
       {uncover}
     />
   {/each}

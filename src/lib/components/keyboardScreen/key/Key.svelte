@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { CellStatus } from '../../../utils/types';
+  import type { InputState } from '../../../utils/types';
   import {
     storeKeyPressed,
     storeKeyTouched,
@@ -10,7 +10,7 @@
 
   export let key: string;
 
-  let letterStatus: CellStatus = null;
+  let letterStatus: InputState = null;
   storeLetterStatus.subscribe((value) => {
     letterStatus = value[key];
   });
@@ -58,6 +58,7 @@
 
 <style>
   button {
+    width: 100%;
     height: 50px;
 
     border: none;

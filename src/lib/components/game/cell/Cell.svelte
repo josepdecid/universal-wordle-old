@@ -1,10 +1,10 @@
 <script lang="ts">
   import { getColorFromState } from '../../../utils/colors';
-  import type { CellStatus } from '../../../utils/types';
+  import type { InputState } from '../../../utils/types';
 
   // Properties ----------
   export let cellIndex: number;
-  export let status: CellStatus;
+  export let status: InputState;
   export let value: string;
   export let selected: boolean;
   export let uncover: boolean;

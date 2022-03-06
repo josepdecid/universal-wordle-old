@@ -3,12 +3,12 @@ export enum GameMode {
   Training = 'Training',
 }
 
-export type CellStatus =
-  | 'Correct'
-  | 'Missplaced'
-  | 'TmpMissplaced'
-  | 'Missing'
-  | 'Empty';
+export enum InputState {
+  Empty,
+  Missing,
+  Missplaced,
+  Correct,
+}
 
 export type NotificationLevel =
   | 'default'

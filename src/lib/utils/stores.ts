@@ -1,19 +1,24 @@
 import { writable } from 'svelte/store';
-import type { CellStatus } from './types';
+import type { InputState } from './types';
+import { zip } from './utils';
 
 export const modal = writable(null);
 export const windowStyle = writable({});
 
-export const storeLetterStatus = writable<Record<string, CellStatus>>({});
-export const updateStoreLetterStatus = (
-  inputLetter: string,
-  status: CellStatus
+export const storeLetterStatus = writable<Record<string, InputState>>({});
+export const updateStoreLetterState = (
+  word: Array<string>,
+  states: Array<InputState>
 ): void => {
-  storeLetterStatus.update((x) => {
-    if (x[inputLetter] === 'Correct') return x;
-    if (x[inputLetter] === 'Missplaced' && status === 'Missing') return x;
-    return { ...x, [inputLetter]: status };
-  });
+  for (const [letter, state] of zip(word, states)) {
+    storeLetterStatus.update((keyboardState) => {
+      if (keyboardState[letter] && keyboardState[letter] >= state) {
+        return keyboardState;
+      }
+
+      return { ...keyboardState, [letter]: state };
+    });
+  }
 };
 
 export const storeKeyPressed = writable<string>(null);

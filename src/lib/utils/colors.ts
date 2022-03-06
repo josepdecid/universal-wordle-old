@@ -1,12 +1,12 @@
-import type { CellStatus } from './types';
+import { InputState } from './types';
 
-export const getColorFromState = (state: CellStatus): string => {
+export const getColorFromState = (state: InputState): string => {
   switch (state) {
-    case 'Correct':
+    case InputState.Correct:
       return '#50a940';
-    case 'Missplaced':
+    case InputState.Missplaced:
       return '#d69a2a';
-    case 'Missing':
+    case InputState.Missing:
       return '#3a3a3c';
     default:
       return 'transparent';
