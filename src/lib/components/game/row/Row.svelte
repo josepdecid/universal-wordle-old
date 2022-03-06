@@ -22,9 +22,9 @@
   export let handleSubmitSolution: (word: string) => void;
   // ---------------------
 
-  let rowElement;
   let isValid: boolean = true;
   let uncover: boolean = false;
+
   let cellsValues = [];
   let inputStates: Array<InputState> = [];
 
@@ -40,7 +40,9 @@
   const checkValidSolution = (inputWord: string): boolean => {
     isValid = checkWordExists(inputWord);
     if (!isValid) {
+      setTimeout(() => (isValid = true), 1000);
       notifications.warning('Ei! Aquesta paraula no existeix!', 3000);
+
       return false;
     }
 
@@ -96,7 +98,7 @@
   document.addEventListener('keydown', (e) => handleKeyboardInput(e.key));
 </script>
 
-<div bind:this={rowElement} class={isValid ? '' : 'invalid-word-shake'}>
+<div class={isValid ? '' : 'invalid-word-shake'}>
   {#each Array(targetWord.length) as _, idx (idx)}
     <Cell
       selected={!locked && cellsValues.length === idx}

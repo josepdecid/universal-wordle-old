@@ -12,6 +12,8 @@ function createNotificationStore() {
 
   function send(message: string, timeout: number, type: string = 'default') {
     _notifications.update((state) => {
+      if (state.filter(({ message: msg }) => msg === message).length)
+        return state;
       return [...state, { id: generateId(), type, message, timeout }];
     });
   }
