@@ -49,8 +49,8 @@
     }
   };
 
-  $: if (currentAttemptIdx >= numAttempts) {
-    open(Popup, { win: false, targetWord });
+  $: if (currentAttemptIdx >= numAttempts || currentAttemptIdx === null) {
+    open(Popup, { wonGame, targetWord });
   }
 </script>
 
@@ -80,6 +80,6 @@
     width: calc(100% - 2rem);
 
     row-gap: 8px;
-    margin: 2rem 1rem;
+    margin: 0 1rem;
   }
 </style>

@@ -62,6 +62,7 @@
     }
   };
 
+  let rowElement;
   let isValid = true;
   let uncover = false;
   let cellsValues = [];
@@ -85,7 +86,9 @@
   const handleCheckSolution = (inputWord: string): boolean => {
     isValid = handleCheckCorrectWord(inputWord);
     if (!isValid) {
-      notifications.warning('This word does not exist!', 3000);
+      notifications.warning('Ei! Aquesta paraula no existeix!', 3000);
+      console.log(rowElement);
+
       return false;
     }
 
@@ -145,7 +148,7 @@
   document.addEventListener('keydown', (e) => handleKeyboardInput(e.key));
 </script>
 
-<div class={isValid ? '' : 'invalid-word-shake'}>
+<div bind:this={rowElement} class={isValid ? '' : 'invalid-word-shake'}>
   {#each Array(targetWord.length) as _, idx (idx)}
     <Cell
       selected={!locked && cellsValues.length === idx}

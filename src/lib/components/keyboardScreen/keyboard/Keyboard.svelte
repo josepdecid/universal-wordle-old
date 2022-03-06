@@ -34,6 +34,9 @@
     justify-content: center;
     align-items: center;
 
+    max-width: 400px;
+    width: 100%;
+
     column-gap: 5px;
   }
 </style>
