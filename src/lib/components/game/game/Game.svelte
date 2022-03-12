@@ -8,7 +8,7 @@
     getWordLength,
   } from '../../../utils/storage';
   import { getRandomGenerator } from '../../../utils/utils';
-  import { Row } from '../../../components/game';
+  import Row from '../../../components/game/row';
   import { Popup } from '../../../components/misc';
 
   const { open } = getContext('simple-modal');

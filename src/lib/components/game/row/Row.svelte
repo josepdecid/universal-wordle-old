@@ -4,7 +4,7 @@
   import { getInputStates } from '../../../utils/utils';
 
   import { Key } from 'ts-key-enum';
-  import { Cell } from '../../../components/game';
+  import Cell from '../../../components/game/cell';
   import { notifications } from '../../../utils/notifications';
   import {
     storeKeyPressed,

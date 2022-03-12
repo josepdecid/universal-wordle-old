@@ -15,17 +15,16 @@
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/svelte": "^3.0.3",
-    "@testing-library/user-event": "^13.5.0",
     "@tsconfig/svelte": "^2.0.1",
     "babel-jest": "^27.5.1",
     "babel-plugin-transform-vite-meta-env": "^1.0.3",
     "gh-pages": "^3.2.3",
     "jest": "^27.5.1",
     "jest-transform-stub": "^2.0.0",
+    "node-sass": "^7.0.1",
     "rollup-plugin-svelte-svg": "1.0.0-beta.6",
     "rollup-pluginutils": "^2.8.2",
+    "sass": "^1.49.9",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.7",
     "svelte-jester": "^2.3.2",
@@ -38,6 +37,7 @@
     "vite-plugin-svelte-svg": "^1.0.0"
   },
   "dependencies": {
+    "@babel/core": "^7.17.5",
     "confetti-js": "^0.0.18",
     "seedrandom": "^3.0.5",
     "svelte-confetti-explosion": "^0.2.0",

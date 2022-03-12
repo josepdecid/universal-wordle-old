@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { Game } from './lib/components/game';
+  import Game from './lib/components/game';
+  import Header from './lib/components/header';
   import { Keyboard } from './lib/components/keyboardScreen';
-  import { Header, Modal, Toast } from './lib/components/misc';
+  import { Modal, Toast } from './lib/components/misc';
 
   import { modal } from './lib/utils/stores';
 </script>
@@ -11,8 +12,8 @@
   <Modal show={$modal}>
     <Game />
   </Modal>
-  <Keyboard />
   <Toast />
+  <Keyboard />
 </main>
 
 <style>
