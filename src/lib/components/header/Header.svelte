@@ -10,10 +10,12 @@
 
 <style>
   header {
-    padding: 2rem;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    max-width: 325px;
+    padding: 2rem;
+    margin: auto;
   }
 </style>
