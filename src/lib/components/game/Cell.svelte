@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { getColorFromState } from '../../utils/colors';
-  import { InputState } from '../../utils/types';
-  import { TRANSITION_DELAY } from '../../utils/constants';
+  import { getColorFromState } from 'src/lib/utils/colors';
+  import { InputState } from 'src/lib/utils/types';
+  import { TRANSITION_DELAY } from 'src/lib/utils/constants';
 
   // Properties ----------
   export let value: string;

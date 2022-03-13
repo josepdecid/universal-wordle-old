@@ -1,13 +1,15 @@
 <script lang="ts">
   import { ConfettiExplosion } from 'svelte-confetti-explosion';
-  import dictionary from '../../../assets/dictionaries/ca-ES/dictionary.json';
+  import dictionary from 'src/assets/dictionaries/ca-ES/dictionary.json';
   import {
     getNumAttempts,
     getStoredData,
     getWordLength,
-  } from '../../utils/storage';
-  import { getRandomGenerator } from '../../utils/utils';
-  import Row from './Row.svelte';
+  } from 'src/lib/utils/storage';
+  import { getRandomGenerator } from 'src/lib/utils/utils';
+  import Row from 'src/lib/components/game/Row.svelte';
+  import Popup from 'src/lib/components/misc/popup/Popup.svelte';
+  import { getContext } from 'svelte';
 
   // The size of the board is fetche from the stored settings.
   const numAttempts = getNumAttempts();
@@ -44,8 +46,9 @@
     }
   };
 
+  const { open } = getContext('simple-modal');
   $: if (currentAttemptIdx >= numAttempts || currentAttemptIdx === null) {
-    // open(Popup, { wonGame, targetWord });
+    open(Popup, { wonGame, targetWord });
   }
 </script>
 
