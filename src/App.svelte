@@ -9,9 +9,7 @@
 
 <main>
   <Header />
-  <Modal show={$modal}>
-    <Game />
-  </Modal>
+  <Game />
   <Toast />
   <Keyboard />
 </main>

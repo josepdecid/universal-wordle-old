@@ -11,8 +11,6 @@
   import Row from '../../../components/game/row';
   import { Popup } from '../../../components/misc';
 
-  const { open } = getContext('simple-modal');
-
   // The size of the board is fetche from the stored settings.
   const numAttempts = getNumAttempts();
   const wordSize = getWordLength();
@@ -44,13 +42,12 @@
     if (savedData[savedData.length - 1] === targetWord) {
       wonGame = true;
       currentAttemptIdx = null;
-      open(Popup, { win: true, targetWord });
       return;
     }
   };
 
   $: if (currentAttemptIdx >= numAttempts || currentAttemptIdx === null) {
-    open(Popup, { wonGame, targetWord });
+    // open(Popup, { wonGame, targetWord });
   }
 </script>
 

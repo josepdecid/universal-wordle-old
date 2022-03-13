@@ -4,7 +4,8 @@
     removeTrainingSeed,
     setGameMode,
   } from '../../../utils/storage';
-  import type { GameMode } from '../../../utils/types';
+  import { GameMode } from '../../../utils/types';
+  import { Toggle } from '../../misc';
 
   const gameMode = getGameMode();
 
@@ -19,11 +20,11 @@
   };
 </script>
 
-<button>
+<!-- <button>
   <img src="/universal-wordle/icons/menu.svg" alt="Menu button" />
-</button>
+</button> -->
 
-<!-- <div class="actions">
+<div class="actions">
   <Toggle
     leftContent={{
       fileName: 'daily',
@@ -44,7 +45,8 @@
       <img src="/universal-wordle/icons/refresh.svg" alt="Daily Challenge" />
     </button>
   {/if}
-</div> -->
+</div>
+
 <style>
   button {
     border-radius: 100%;

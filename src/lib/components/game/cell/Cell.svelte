@@ -1,27 +1,37 @@
 <script lang="ts">
   import { getColorFromState } from '../../../utils/colors';
-  import type { InputState } from '../../../utils/types';
+  import { InputState } from '../../../utils/types';
+  import { TRANSITION_DELAY } from '../../../utils/constants';
 
   // Properties ----------
-  export let cellIndex: number;
-  export let status: InputState;
   export let value: string;
-  export let selected: boolean;
-  export let uncover: boolean;
+  export let cellIndex: number;
+
+  export let uncover: boolean = false;
+  export let selected: boolean = false;
+  export let state: InputState = InputState.Empty;
   // ---------------------
 
-  $: color = getColorFromState(status);
+  $: color = getColorFromState(state);
 </script>
 
-<div class={`cell ${uncover ? 'flip-cells' : ''}`}>
+<div data-testId="cell" class={`cell ${uncover ? 'flip-cells' : ''}`}>
   <div
+    data-testId="cell-inner"
     class={`cell-inner ${uncover ? 'flip-cells' : ''}`}
-    style="transition-delay: {0.2 * cellIndex}s;"
+    style="transition-delay: {TRANSITION_DELAY * cellIndex}s;"
   >
-    <div class={`cell-front ${selected ? 'selected-cell' : ''}`}>
+    <div
+      data-testId="cell-front"
+      class={`cell-front ${selected ? 'cell-cursor' : ''}`}
+    >
       {value || ''}
     </div>
-    <div class="cell-back" style="background-color: {color}">
+    <div
+      data-testId="cell-back"
+      class="cell-back"
+      style="background-color: {color}"
+    >
       {value || ''}
     </div>
   </div>
@@ -79,7 +89,7 @@
     transform: rotateY(180deg);
   }
 
-  .selected-cell::after {
+  .cell-cursor::after {
     content: '';
     width: 2px;
     height: 28px;

@@ -104,7 +104,7 @@
       selected={!locked && cellsValues.length === idx}
       cellIndex={idx}
       value={cellsValues[idx]}
-      status={inputStates[idx]}
+      state={inputStates[idx]}
       {uncover}
     />
   {/each}
