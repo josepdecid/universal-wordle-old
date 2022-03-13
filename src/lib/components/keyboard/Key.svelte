@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { InputState } from '../../../utils/types';
+  import type { InputState } from '../../utils/types';
   import {
     storeKeyPressed,
     storeKeyTouched,
     storeLetterStatus,
-  } from '../../../utils/stores';
-  import { getColorFromState } from '../../../utils/colors';
+  } from '../../utils/stores';
+  import { getColorFromState } from '../../utils/colors';
   import { Key } from 'ts-key-enum';
 
   export let key: string;

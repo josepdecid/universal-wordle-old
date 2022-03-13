@@ -1,15 +1,13 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
   import { ConfettiExplosion } from 'svelte-confetti-explosion';
-  import dictionary from '../../../../assets/dictionaries/ca-ES/dictionary.json';
+  import dictionary from '../../../assets/dictionaries/ca-ES/dictionary.json';
   import {
     getNumAttempts,
     getStoredData,
     getWordLength,
-  } from '../../../utils/storage';
-  import { getRandomGenerator } from '../../../utils/utils';
-  import Row from '../../../components/game/row';
-  import { Popup } from '../../../components/misc';
+  } from '../../utils/storage';
+  import { getRandomGenerator } from '../../utils/utils';
+  import Row from './Row.svelte';
 
   // The size of the board is fetche from the stored settings.
   const numAttempts = getNumAttempts();

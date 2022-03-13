@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Title from './title';
-  import Menu from './menu';
+  import Title from './Title.svelte';
+  import Menu from './Menu.svelte';
 </script>
 
 <header>

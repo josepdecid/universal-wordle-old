@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { getKeyboardLayout } from '../../../utils/keyboards';
-  import { Key } from '../../../components/keyboardScreen';
+  import { getKeyboardLayout } from '../../utils/keyboards';
+  import Key from './Key.svelte';
 
   const layout = getKeyboardLayout('ca-ES');
 </script>

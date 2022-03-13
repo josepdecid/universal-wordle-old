@@ -1,16 +1,16 @@
 <script lang="ts">
-  import type { InputState } from '../../../utils/types';
+  import type { InputState } from '../../utils/types';
 
-  import { getInputStates } from '../../../utils/utils';
+  import { getInputStates } from '../../utils/utils';
 
   import { Key } from 'ts-key-enum';
-  import Cell from '../../../components/game/cell';
-  import { notifications } from '../../../utils/notifications';
+  import Cell from './Cell.svelte';
+  import { notifications } from '../../utils/notifications';
   import {
     storeKeyPressed,
     storeKeyTouched,
     updateStoreLetterState,
-  } from '../../../utils/stores';
+  } from '../../utils/stores';
 
   // Properties ----------
   export let targetWord: string;

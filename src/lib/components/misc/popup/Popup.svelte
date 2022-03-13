@@ -1,6 +1,4 @@
 <script lang="ts">
-  import Row from '../../game/row';
-
   export let targetWord: string;
   export let wonGame: boolean;
 </script>

@@ -1,10 +1,8 @@
 <script lang="ts">
-  import Game from './lib/components/game';
-  import Header from './lib/components/header';
-  import { Keyboard } from './lib/components/keyboardScreen';
-  import { Modal, Toast } from './lib/components/misc';
-
-  import { modal } from './lib/utils/stores';
+  import Game from './lib/components/game/Game.svelte';
+  import Header from './lib/components/header/Header.svelte';
+  import Keyboard from './lib/components/keyboard/Keyboard.svelte';
+  import { Toast } from './lib/components/misc';
 </script>
 
 <main>

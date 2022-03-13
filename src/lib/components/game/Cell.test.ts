@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 
-import Cell from '.';
+import Cell from './Cell.svelte';
 import { cleanup, render } from '@testing-library/svelte';
-import { InputState } from '../../../utils/types';
-import { getColorFromState } from '../../../utils/colors';
-import { TRANSITION_DELAY } from '../../../utils/constants';
+import { InputState } from '../../utils/types';
+import { getColorFromState } from '../../utils/colors';
+import { TRANSITION_DELAY } from '../../utils/constants';
 
 describe('Cell component', () => {
   it('renders the Cell component with the default values', () => {
