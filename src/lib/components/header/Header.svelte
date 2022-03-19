@@ -15,7 +15,7 @@
     justify-content: space-between;
     align-items: center;
     max-width: 325px;
-    padding: 2rem;
+    padding: 2rem 0 1rem 0;
     margin: auto;
   }
 </style>

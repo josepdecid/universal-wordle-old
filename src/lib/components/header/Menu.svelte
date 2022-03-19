@@ -3,55 +3,78 @@
     getGameMode,
     removeTrainingSeed,
     setGameMode,
-  } from '../../utils/storage';
-  import { GameMode } from '../../utils/types';
+  } from 'src/lib/utils/storage';
+  import { GameMode } from 'src/lib/utils/types';
+  import { getContext } from 'svelte';
+  import { _ } from 'svelte-i18n';
+  import Language from 'src/lib/components/modals/Language.svelte';
+
+  const { open } = getContext('simple-modal');
+
+  let isMenuOpen = false;
+  const setIsOpen = (menuOpen: boolean) => {
+    isMenuOpen = menuOpen;
+  };
 
   const gameMode = getGameMode();
 
-  const handleChangeGameMode = (newGameMode: GameMode): void => {
+  const changeGameMode = (newGameMode: GameMode): void => {
     setGameMode(newGameMode);
     location.reload();
   };
 
-  const handleResetWordle = () => {
+  const resetTrainingWord = () => {
     removeTrainingSeed();
     location.reload();
   };
 
-  let isOpen = false;
-  const handleToggleMenu = () => {
-    isOpen = !isOpen;
+  const openLanguageSelector = () => {
+    setIsOpen(false);
+
+    open(Language);
   };
+
+  const popoverOptions = [
+    {
+      text: $_('gameModes.daily'),
+      onClick: () => changeGameMode(GameMode.Daily),
+    },
+    {
+      text: $_('gameModes.training'),
+      onClick: () => changeGameMode(GameMode.Training),
+    },
+    // {
+    //   text: $_('otherLanguages'),
+    //   onClick: openLanguageSelector,
+    // },
+  ];
 </script>
 
 <div class="actions">
   {#if gameMode === GameMode.Training}
-    <button on:click={handleResetWordle}>
-      <img src="/universal-wordle/icons/refresh.svg" alt="Refresh Wordle" />
+    <button on:click={resetTrainingWord}>
+      <img src="/universal-wordle/icons/refresh.svg" alt={$_('refreshWord')} />
     </button>
   {/if}
 
-  <button on:click={handleToggleMenu} id="menu-button">
+  <button on:click={() => setIsOpen(!isMenuOpen)} id="menu-button">
     <img
-      src="/universal-wordle/icons/{isOpen ? 'cross' : 'burger'}.svg"
-      alt="Menu button"
+      src="/universal-wordle/icons/{isMenuOpen ? 'cross' : 'burger'}.svg"
+      alt={$_('menuButton')}
     />
   </button>
 
-  {#if isOpen}
-    <div class="popover-bg" on:click={() => handleToggleMenu()} />
+  {#if isMenuOpen}
+    <div class="popover-bg" on:click={() => setIsOpen(false)} />
     <div class="popover">
       <ul>
-        <li>
-          <button on:click={() => handleChangeGameMode(GameMode.Daily)}>
-            Repte diari
-          </button>
-        </li>
-        <li>
-          <button on:click={() => handleChangeGameMode(GameMode.Training)}>
-            Pràctica
-          </button>
-        </li>
+        {#each popoverOptions as { text, onClick }}
+          <li>
+            <button on:click={onClick}>
+              {text}
+            </button>
+          </li>
+        {/each}
       </ul>
     </div>
   {/if}

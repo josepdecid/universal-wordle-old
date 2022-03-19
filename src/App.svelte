@@ -5,15 +5,21 @@
   import { Toast } from 'src/lib/components/misc';
   import Modal from 'src/lib/components/misc/modal';
   import { modal } from 'src/lib/utils/stores';
+
+  import { isLoading } from 'svelte-i18n';
 </script>
 
 <main>
-  <Header />
-  <Modal show={$modal}>
-    <Game />
-  </Modal>
-  <Toast />
-  <Keyboard />
+  {#if $isLoading}
+    Please wait...
+  {:else}
+    <Modal show={$modal}>
+      <Header />
+      <Game />
+    </Modal>
+    <Toast />
+    <Keyboard />
+  {/if}
 </main>
 
 <style>

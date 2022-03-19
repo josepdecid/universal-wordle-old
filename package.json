@@ -44,6 +44,7 @@
     "confetti-js": "^0.0.18",
     "seedrandom": "^3.0.5",
     "svelte-confetti-explosion": "^0.2.0",
+    "svelte-i18n": "^3.3.13",
     "ts-key-enum": "^2.0.11"
   }
 }

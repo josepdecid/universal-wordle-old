@@ -1,0 +1,9 @@
+{
+  "gameModes": {
+    "daily": "Daily challenge",
+    "training": "Practice mode"
+  },
+  "otherLanguages": "Other languages",
+  "refreshWord": "Get a new word",
+  "menuButton": "Menu button"
+}
